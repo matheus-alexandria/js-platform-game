@@ -1,5 +1,17 @@
+import { Level } from "./Level";
 import { Player } from "./Player";
 import { Vec } from "./Vec";
 
-const player = Player.create(new Vec(0, 0));
-console.log(player.size);
+let simpleLevelPlan = `
+......................
+..#................#..
+..#..............=.#..
+..#.........o.o....#..
+..#.@......#####...#..
+..#####............#..
+......#++++++++++++#..
+......##############..
+......................`;
+
+const level = new Level(simpleLevelPlan);
+console.log(`${level.width} by ${level.height}`);

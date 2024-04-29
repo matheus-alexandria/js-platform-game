@@ -1,4 +1,6 @@
+import { Actor } from "./Actor";
 import { Vec } from "./Vec";
+import { levelChars } from "./utils/levelChars";
 
 export class Level {
   public height;

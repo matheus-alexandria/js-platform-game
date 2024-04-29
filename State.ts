@@ -1,6 +1,7 @@
+import { Actor } from "./Actor";
 import { Level } from "./Level";
 
-class State {
+export class State {
   public level;
   public actors;
   public status;
