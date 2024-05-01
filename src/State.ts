@@ -2,9 +2,9 @@ import { Actor } from "./Actor";
 import { Level } from "./Level";
 
 export class State {
-  public level;
-  public actors;
-  public status;
+  public level: Level;
+  public actors: Actor[];
+  public status: string;
 
   constructor({ level, actors, status }: IStateParams) {
     this.level = level;

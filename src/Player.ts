@@ -1,8 +1,8 @@
 import { Vec } from "./Vec";
 
 export class Player {
-  public pos;
-  public speed;
+  public pos: Vec;
+  public speed: Vec;
   public size = new Vec(0.8, 1.5);
 
   constructor(pos: Vec, speed: Vec) {
