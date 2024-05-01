@@ -2,7 +2,7 @@ import { Actor } from "./Actor";
 import { Level } from "./Level";
 import { State } from "./State";
 
-const SCALE = 30;
+const SCALE = 20;
 
 export class DOMDisplay {
   public dom: HTMLElement;
@@ -22,6 +22,35 @@ export class DOMDisplay {
     this.dom.appendChild(this.actorLayer);
     this.dom.className = `game ${state.status}`;
     this.scrollPlayerIntoView(state);
+  }
+
+  private scrollPlayerIntoView(state: State): void {
+    const width = this.dom.clientWidth;
+    const height = this.dom.clientHeight;
+    const margin = width / 3;
+
+    // The viewport
+    const left = this.dom.scrollLeft;
+    const right = left + width;
+    const top = this.dom.scrollTop;
+    const bottom = top + height;
+
+    const player = state.player!;
+    const center = player.pos.plus(player.size.times(0.5)).times(SCALE);
+
+    // Scroll position on X axis
+    if (center.x < left + margin) {
+      this.dom.scrollLeft = center.x - margin;
+    } else if (center.x > right - margin) {
+      this.dom.scrollLeft = center.x + margin - width;
+    }
+
+    // Scroll position on Y axis
+    if (center.y < top + margin) {
+      this.dom.scrollTop = center.y - margin;
+    } else if (center.y > bottom - margin) {
+      this.dom.scrollTop = center.y + margin - height;
+    }
   }
 
   private drawActors(actors: Actor[]) {
