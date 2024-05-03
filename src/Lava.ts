@@ -1,3 +1,4 @@
+import { State } from "./State";
 import { Vec } from "./Vec";
 
 export class Lava {
@@ -25,6 +26,10 @@ export class Lava {
       default:
         break;
     }
+  }
+
+  collides(state: State): State {
+    return new State({ level: state.level, actors: state.actors, status: 'lost' })
   }
 }
 
