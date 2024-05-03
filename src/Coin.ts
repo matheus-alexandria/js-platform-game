@@ -1,10 +1,13 @@
 import { State } from "./State";
 import { Vec } from "./Vec";
 
+const wobbleSpeed = 8;
+const wobbleDist = 0.07;
+
 export class Coin {
-  public pos;
-  public basePos;
-  public wobble;
+  public pos: Vec;
+  public basePos: Vec;
+  public wobble: number;
   public size = new Vec(0.6, 0.6);
 
   constructor({ pos, basePos, wobble }: ICoinParams) {
@@ -26,6 +29,16 @@ export class Coin {
       return new State({ level: state.level, actors: filtered, status: 'won'})
     }
     return new State({ level: state.level, actors: filtered, status: state.status })
+  }
+
+  update(time: number): Coin {
+    const wobble = this.wobble + time * wobbleSpeed;
+    const wobblePos = Math.sin(wobble) * wobbleDist;
+    return new Coin({ 
+      pos: this.basePos.plus(new Vec(0, wobblePos)), 
+      basePos: this.basePos, 
+      wobble 
+    });
   }
 }
 
