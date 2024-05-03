@@ -2,9 +2,9 @@ import { State } from "./State";
 import { Vec } from "./Vec";
 
 export class Lava {
-  public pos;
-  public speed;
-  public reset;
+  public pos: Vec;
+  public speed: Vec;
+  public reset?: Vec;
   public size = new Vec(1, 1);
 
   constructor({ pos, speed, reset }: ILavaParams) {
@@ -30,6 +30,17 @@ export class Lava {
 
   collides(state: State): State {
     return new State({ level: state.level, actors: state.actors, status: 'lost' })
+  }
+
+  update(time: number, state: State): Lava {
+    const newPos = this.pos.plus(this.speed.times(time));
+    if (!state.level.touches(newPos, this.size, 'wall')) {
+      return new Lava({ pos: newPos, speed: this.speed, reset: this.reset });
+    } else if (this.reset) {
+      return new Lava({ pos: this.reset, speed: this.speed, reset: this.reset });
+    } else {
+      return new Lava({ pos: this.pos, speed: this.speed.times(-1) });
+    }
   }
 }
 
