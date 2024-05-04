@@ -33,17 +33,13 @@ export class Level {
     const yStart = Math.floor(pos.y);
     const yEnd = Math.ceil(pos.y + size.y);
 
-    const isOutside = xStart < 0 || xEnd < this.width || yStart < 0 || yEnd > this.height;
-    const squaresTypes = [
-      this.rows[yStart][xStart], 
-      this.rows[yStart][xEnd], 
-      this.rows[yEnd][xStart], 
-      this.rows[yEnd][yEnd]
-    ];
-    
-    const here = isOutside ? ['wall'] : squaresTypes;
-
-    if (here.includes(type)) return true;
+    for (let y = yStart; y < yEnd; y++) {
+      for (let x = xStart; x < xEnd; x++) {
+        const isOutside = x < 0 || x >= this.width || y < 0 || yEnd >= this.height;
+        const here = isOutside ? 'wall' : this.rows[y][x]
+        if (here === type) return true;
+      }
+    }
 
     return false;
   }
