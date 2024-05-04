@@ -21,7 +21,7 @@ export class State {
     return this.actors.find(a => a.type == "player");
   }
 
-  update(time, keys): State {
+  update(time: number, keys: Record<string, boolean>): State {
     const actors = this.actors.map((actor) => actor.update(time, this, keys));
 
     let newState = new State({ level: this.level, actors, status: this.status });
@@ -36,7 +36,7 @@ export class State {
     }
 
     for (let actor of actors) {
-      if (actor.type !== 'player' && overlaps(player, actor)) {
+      if (actor.type !== 'player' && overlaps(actor, player)) {
         newState = actor.collides(newState);
       }
     }
