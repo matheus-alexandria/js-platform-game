@@ -3,7 +3,7 @@ import { Vec } from "./Vec";
 
 const gravity = 30;
 const playerXSpeed = 7;
-const jumpSpeed = 1;
+const jumpSpeed = 16;
 
 export class Player {
   public pos: Vec;
