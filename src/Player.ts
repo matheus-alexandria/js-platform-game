@@ -3,7 +3,7 @@ import { Vec } from "./Vec";
 
 const gravity = 30;
 const playerXSpeed = 7;
-const jumpSpeed = 14;
+const jumpSpeed = 1;
 
 export class Player {
   public pos: Vec;
@@ -20,6 +20,10 @@ export class Player {
   static create(pos: Vec) {
     return new Player(pos.plus(new Vec(0, -0.5)), new Vec(0, 0));
   }
+
+  collides(state: State): State {
+    return new State({ ...state })
+  };
 
   update(time: number, state: State, keys: Record<string, boolean>): Player {
     let xSpeed = 0;
