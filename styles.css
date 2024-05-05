@@ -24,6 +24,10 @@
   background: rgb(241, 229, 89);
 }
 
+.monster {
+  background: rgb(30, 255, 189);
+}
+
 .player {
   background: rgb(64, 64, 64);
 }
