@@ -1,4 +1,4 @@
-import { Actor } from "./Actor";
+import { Actor } from "./actors/Actor";
 import { Vec } from "./Vec";
 import { levelChars } from "./utils/levelChars";
 

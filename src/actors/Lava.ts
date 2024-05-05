@@ -1,5 +1,5 @@
-import { State } from "./State";
-import { Vec } from "./Vec";
+import { State } from "../State";
+import { Vec } from "../Vec";
 
 export class Lava {
   public pos: Vec;

@@ -1,5 +1,5 @@
-import { State } from "./State";
-import { Vec } from "./Vec";
+import { State } from "../State";
+import { Vec } from "../Vec";
 
 const wobbleSpeed = 8;
 const wobbleDist = 0.07;

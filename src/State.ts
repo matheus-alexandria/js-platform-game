@@ -1,4 +1,4 @@
-import { Actor } from "./Actor";
+import { Actor } from "./actors/Actor";
 import { Level } from "./Level";
 import { overlaps } from "./utils/overlaps";
 

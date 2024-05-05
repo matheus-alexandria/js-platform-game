@@ -1,5 +1,5 @@
-import { State } from "./State";
-import { Vec } from "./Vec";
+import { State } from "../State";
+import { Vec } from "../Vec";
 
 const gravity = 30;
 const playerXSpeed = 7;

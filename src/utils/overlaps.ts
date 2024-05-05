@@ -1,4 +1,4 @@
-import { Actor } from "../Actor";
+import { Actor } from "../actors/Actor";
 
 export function overlaps(actor1: Actor, actor2: Actor) {
   return (
